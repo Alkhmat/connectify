@@ -67,6 +67,25 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  // Future<void> fetchUserData() async {
+  //   emit(AuthLoading());
+  //   try {
+  //     final User? user = _auth.currentUser;
+  //     if (user != null) {
+  //       final doc = await _firestore.collection('users').doc(user.uid).get();
+  //       final data = doc.data();
+  //       if (data != null) {
+  //         emit(UserDataLoaded([data]));
+  //       } else {
+  //         emit(AuthError('User data not found.'));
+  //       }
+  //     } else {
+  //       emit(AuthError('User not logged in.'));
+  //     }
+  //   } catch (e) {
+  //     emit(AuthError(e.toString()));
+  //   }
+  // }
   Future<void> fetchUserData() async {
     emit(AuthLoading());
     try {

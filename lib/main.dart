@@ -1,4 +1,4 @@
-import 'package:connectify/code/repository/auth/cubit/auth_cubit.dart';
+import 'package:connectify/code/repository/auth/auth_cubit/auth_cubit.dart';
 // import 'package:connectify/code/repository/auth/login_view.dart';
 // import 'package:connectify/code/repository/auth/register_view.dart';
 // import 'package:connectify/code/repository/home/home_view.dart';
@@ -7,7 +7,7 @@ import 'package:connectify/code/core/firebase/options/firebase_options.dart';
 import 'package:connectify/code/repository/auth/profile/cubit/image_cubit.dart';
 import 'package:connectify/code/repository/auth/profile/cubit_2/tap_cubit.dart';
 // import 'package:connectify/code/repository/auth/profile/profile_view.dart';
-import 'package:connectify/code/repository/auth/register_view.dart';
+import 'package:connectify/code/repository/home/home_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +37,7 @@ class Connectify extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: RegisterView(),
+        home: HomeView(),
       ),
     );
   }

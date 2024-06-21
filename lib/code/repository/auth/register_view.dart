@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:connectify/code/repository/auth/widgets/text_fieled.dart';
 import 'package:connectify/code/repository/auth/profile/profile_view.dart';
-import 'package:connectify/code/repository/auth/cubit/auth_cubit.dart';
+import 'package:connectify/code/repository/auth/auth_cubit/auth_cubit.dart';
 import 'login_view.dart';
 
 class RegisterView extends StatefulWidget {
@@ -48,88 +48,100 @@ class _RegisterViewState extends State<RegisterView> {
             }
           }
         },
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 340, top: 20),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios),
-                ),
-              ),
-              const Spacer(),
-              Text(
-                'Registration',
-                style: GoogleFonts.pacifico(
-                  textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: h * 0.05,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              TextFieledForAuth(
-                label: 'User name',
-                controller: _usernameController,
-                icon: const Icon(Icons.person),
-              ),
-              TextFieledForAuth(
-                label: 'Email address',
-                controller: _emailController,
-                icon: const Icon(Icons.alternate_email_outlined),
-              ),
-              TextFieledForAuth(
-                label: 'Password',
-                icon: const Icon(Icons.password_outlined),
-                controller: _passwordController,
-              ),
-              SizedBox(height: h * 0.02),
-              TextButton(
-                onPressed: () {
-                  final email = _emailController.text;
-                  final password = _passwordController.text;
-                  final username = _usernameController.text;
-                  context.read<AuthCubit>().signUp(email, password, username);
-                },
-                child: Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: h * 0.03,
-                  ),
-                ),
-              ),
-              const Spacer(),
-              Row(
+        child: BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            if (state is AuthLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            return Center(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('If you have an existing account '),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LogInView(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Sign In',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: h * 0.024,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 340, top: 20),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.arrow_back_ios),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    'Registration',
+                    style: GoogleFonts.pacifico(
+                      textStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: h * 0.05,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
+                  TextFieledForAuth(
+                    label: 'User name',
+                    controller: _usernameController,
+                    icon: const Icon(Icons.person),
+                  ),
+                  TextFieledForAuth(
+                    label: 'Email address',
+                    controller: _emailController,
+                    icon: const Icon(Icons.alternate_email_outlined),
+                  ),
+                  TextFieledForAuth(
+                    label: 'Password',
+                    icon: const Icon(Icons.password_outlined),
+                    controller: _passwordController,
+                  ),
+                  SizedBox(height: h * 0.02),
+                  TextButton(
+                    onPressed: () {
+                      final email = _emailController.text;
+                      final password = _passwordController.text;
+                      final username = _usernameController.text;
+                      context
+                          .read<AuthCubit>()
+                          .signUp(email, password, username);
+                    },
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: h * 0.03,
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('If you have an existing account '),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LogInView(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Sign In',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: h * 0.024,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

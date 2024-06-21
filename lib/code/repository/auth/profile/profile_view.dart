@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:connectify/code/repository/auth/profile/cubit_2/tap_cubit.dart';
+import 'package:connectify/code/repository/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:connectify/code/repository/auth/profile/cubit/image_cubit.dart';
@@ -30,7 +31,12 @@ class _ProfileViewState extends State<ProfileView> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeView(),
+              ),
+            );
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -39,6 +45,13 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ),
         actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.chat_bubble_outline_rounded,
+              size: h * 0.032,
+            ),
+          ),
           IconButton(
             onPressed: () {},
             icon: Icon(
@@ -56,8 +69,8 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ),
       ),
-      body: Center(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
             children: [
               BlocBuilder<ImageCubit, ImageState>(
@@ -139,10 +152,6 @@ class _ProfileViewState extends State<ProfileView> {
                                   ),
                                 ),
                               ),
-                              Divider(
-                                color: Colors.black,
-                                height: h * 0.01,
-                              )
                             ],
                           );
                         },
