@@ -8,6 +8,7 @@ import 'package:connectify/code/repository/auth/profile/cubit/image_cubit.dart';
 import 'package:connectify/code/repository/auth/profile/cubit_2/tap_cubit.dart';
 // import 'package:connectify/code/repository/auth/profile/profile_view.dart';
 import 'package:connectify/code/repository/home/home_view.dart';
+import 'package:connectify/code/repository/welcome/welcome_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +38,7 @@ class Connectify extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeView(),
+        home: WelcomeView(),
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:connectify/code/repository/add_content/add_content.dart';
 import 'package:connectify/code/repository/auth/register_view.dart';
-import 'package:connectify/code/repository/chats/contacts/contact_view.dart';
 import 'package:connectify/code/repository/classes/repository_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -73,24 +72,6 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ContactView(),
-                  ),
-                );
-              },
-              icon: Icon(
-                Icons.chat_bubble_outline_rounded,
-                size: h * 0.04,
-                color: Colors.black87,
-              ),
-            ),
-          )
         ],
       ),
       body: Column(
@@ -100,7 +81,7 @@ class _HomeViewState extends State<HomeView> {
             width: w,
             child: PageView.builder(
               itemCount: 10,
-              controller: PageController(initialPage: 100),
+              controller: PageController(initialPage: 0),
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
                 return Container(
@@ -164,7 +145,7 @@ class _HomeViewState extends State<HomeView> {
                 );
               },
             ),
-          )
+          ),
         ],
       ),
     );
