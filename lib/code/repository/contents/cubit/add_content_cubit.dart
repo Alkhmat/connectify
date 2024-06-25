@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -53,7 +55,7 @@ class AddContentCubit extends Cubit<List<AddContentState>> {
         emit(List.from(state));
       }
     } catch (e) {
-      print('Error adding video: $e');
+      log('Error adding video: $e');
     }
   }
 
