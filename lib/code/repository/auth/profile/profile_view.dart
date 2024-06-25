@@ -99,7 +99,7 @@ class _ProfileViewState extends State<ProfileView> {
                       },
                       child: CircleAvatar(
                         backgroundImage: FileImage(
-                          File(state.images),
+                          File(state.imagePath),
                         ),
                         radius: h * 0.1,
                         backgroundColor: Colors.black45,

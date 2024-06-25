@@ -80,12 +80,12 @@ class _LogInViewState extends State<LogInView> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  TextFieledForAuth(
+                  CustomTextFieled(
                     label: 'Email address',
                     controller: _emailController,
                     icon: const Icon(Icons.alternate_email_outlined),
                   ),
-                  TextFieledForAuth(
+                  CustomTextFieled(
                     label: 'Password',
                     icon: const Icon(Icons.password_outlined),
                     controller: _passwordController,

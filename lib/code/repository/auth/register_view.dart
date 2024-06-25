@@ -80,17 +80,17 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                     ),
                   ),
-                  TextFieledForAuth(
+                  CustomTextFieled(
                     label: 'User name',
                     controller: _usernameController,
                     icon: const Icon(Icons.person),
                   ),
-                  TextFieledForAuth(
+                  CustomTextFieled(
                     label: 'Email address',
                     controller: _emailController,
                     icon: const Icon(Icons.alternate_email_outlined),
                   ),
-                  TextFieledForAuth(
+                  CustomTextFieled(
                     label: 'Password',
                     icon: const Icon(Icons.password_outlined),
                     controller: _passwordController,

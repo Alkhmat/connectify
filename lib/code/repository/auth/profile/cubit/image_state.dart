@@ -5,7 +5,13 @@ sealed class ImageState {}
 final class ImageInitial extends ImageState {}
 
 final class ImageLoaded extends ImageState {
-  final String images;
+  final String imagePath;
 
-  ImageLoaded(this.images);
+  ImageLoaded(this.imagePath);
+}
+
+final class VideoLoaded extends ImageState {
+  final String videoPath;
+
+  VideoLoaded(this.videoPath);
 }

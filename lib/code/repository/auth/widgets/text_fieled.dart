@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TextFieledForAuth extends StatelessWidget {
+class CustomTextFieled extends StatelessWidget {
   final String? label;
+  final Widget? suffixIcon;
   final Icon? icon;
   final TextEditingController? controller;
-  const TextFieledForAuth({super.key, this.icon, this.label, this.controller});
+  const CustomTextFieled(
+      {super.key, this.icon, this.label, this.controller, this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,7 @@ class TextFieledForAuth extends StatelessWidget {
         decoration: InputDecoration(
           label: Text(label.toString()),
           prefixIcon: icon,
+          suffixIcon: suffixIcon,
           prefixIconColor: Colors.black,
           labelStyle: const TextStyle(
               fontSize: 20, fontStyle: FontStyle.normal, color: Colors.black),

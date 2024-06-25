@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectify/code/core/firebase/firebase_collections/firebase_collections.dart';
 import 'package:connectify/code/repository/auth/model/auth_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -91,7 +92,10 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final User? user = _auth.currentUser;
       if (user != null) {
-        final doc = await _firestore.collection('users').doc(user.uid).get();
+        final doc = await _firestore
+            .collection(FireColecctions.users)
+            .doc(user.uid)
+            .get();
         final data = doc.data();
         if (data != null) {
           emit(UserDataLoaded([data]));
