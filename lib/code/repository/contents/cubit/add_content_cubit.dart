@@ -1,10 +1,9 @@
-import 'dart:developer';
-
+import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'dart:io';
+import 'dart:developer';
 
 part 'add_content_state.dart';
 
@@ -33,7 +32,7 @@ class AddContentCubit extends Cubit<List<AddContentState>> {
         emit(List.from(state));
       }
     } catch (e) {
-      print('Error adding photo: $e');
+      log('Error adding photo: $e');
     }
   }
 
@@ -88,7 +87,7 @@ class AddContentCubit extends Cubit<List<AddContentState>> {
       }
       emit(loadedContent);
     } catch (e) {
-      print('Error loading content: $e');
+      log('Error loading content: $e');
     }
   }
 }

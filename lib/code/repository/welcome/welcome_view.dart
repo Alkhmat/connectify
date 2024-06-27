@@ -27,7 +27,7 @@ class _WelcomeViewState extends State<WelcomeView> {
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +36,7 @@ class _WelcomeViewState extends State<WelcomeView> {
               RepositoryText.hometext,
               style: GoogleFonts.pacifico(
                 textStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: h * 0.07,
                   fontWeight: FontWeight.normal,
                 ),
@@ -46,7 +46,7 @@ class _WelcomeViewState extends State<WelcomeView> {
               RepositoryText.subhometext,
               style: GoogleFonts.pacifico(
                 textStyle: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: h * 0.025,
                   fontWeight: FontWeight.normal,
                 ),
@@ -54,7 +54,7 @@ class _WelcomeViewState extends State<WelcomeView> {
             ),
             SizedBox(height: h * 0.05),
             CircularProgressIndicator(
-              color: Colors.black,
+              color: Colors.white,
               strokeWidth: w * 0.01,
             ),
           ],

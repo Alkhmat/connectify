@@ -513,6 +513,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:video_player/video_player.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -528,7 +529,7 @@ class _HomeViewState extends State<HomeView> {
     final w = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         toolbarHeight: h * 0.07,
         leadingWidth: w,
@@ -539,7 +540,7 @@ class _HomeViewState extends State<HomeView> {
             RepositoryText.hometext,
             style: GoogleFonts.pacifico(
               textStyle: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: h * 0.04,
                 fontWeight: FontWeight.normal,
               ),
@@ -551,12 +552,12 @@ class _HomeViewState extends State<HomeView> {
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
               onPressed: () {
-                context.read<AddContentCubit>().addPhoto();
+                context.read<AddContentCubit>().addVideo();
               },
               icon: Icon(
                 Icons.add,
                 size: h * 0.043,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
           ),
@@ -574,7 +575,7 @@ class _HomeViewState extends State<HomeView> {
               icon: Icon(
                 Icons.person_outline,
                 size: h * 0.043,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
           ),
@@ -622,25 +623,16 @@ class _HomeViewState extends State<HomeView> {
                               image: NetworkImage(url),
                               fit: BoxFit.cover,
                             ),
-                            borderRadius: BorderRadius.circular(24),
-                            color: Colors.black45,
+                            borderRadius: BorderRadius.circular(14),
+                            color: Colors.white24,
                           ),
                           child: buildContentControls(h, index),
                         );
                       } else if (type == 'video') {
-                        // Здесь можно добавить виджет для отображения видео
-                        return Container(
+                        return VideoPlayerWidget(
+                          url: url,
                           height: h * 0.899,
                           width: w,
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 7,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.black45,
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          child: buildContentControls(h, index),
                         );
                       }
                       return const Center(
@@ -766,6 +758,65 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ],
+    );
+  }
+}
+
+class VideoPlayerWidget extends StatefulWidget {
+  final String url;
+  final double height;
+  final double width;
+
+  const VideoPlayerWidget({
+    super.key,
+    required this.url,
+    required this.height,
+    required this.width,
+  });
+
+  @override
+  _VideoPlayerWidgetState createState() => _VideoPlayerWidgetState();
+}
+
+class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.network(widget.url)
+      ..initialize().then((_) {
+        setState(() {});
+        _controller.play(); // Автоматически запускает видео после инициализации
+      });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: widget.height,
+      width: widget.width,
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 7),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14),
+        color: Colors.black45,
+      ),
+      child: _controller.value.isInitialized
+          ? AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),
+            )
+          : const Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            ),
     );
   }
 }
