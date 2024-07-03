@@ -1,17 +1,10 @@
 import 'package:connectify/code/repository/auth/auth_cubit/auth_cubit.dart';
-// import 'package:connectify/code/repository/auth/login_view.dart';
-// import 'package:connectify/code/repository/auth/register_view.dart';
-// import 'package:connectify/code/repository/home/home_view.dart';
-// import 'package:connectify/code/repository/welcome/welcome_view.dart';
 import 'package:connectify/code/core/firebase/options/firebase_options.dart';
 import 'package:connectify/code/repository/auth/profile/cubit/image_cubit.dart';
 import 'package:connectify/code/repository/auth/profile/cubit_2/tap_cubit.dart';
 import 'package:connectify/code/repository/contents/cubit/add_content_cubit.dart';
-// import 'package:connectify/code/repository/contents/cubit/content_cubit.dart';
 import 'package:connectify/code/repository/home/bookmark_cubit/bookmark_cubit.dart';
 import 'package:connectify/code/repository/home/favourite_cubit/likes_cubit.dart';
-// import 'package:connectify/code/repository/auth/profile/profile_view.dart';
-// import 'package:connectify/code/repository/home/home_view.dart';
 import 'package:connectify/code/repository/welcome/welcome_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
