@@ -203,7 +203,7 @@ class _HomeViewState extends State<HomeView> {
                   horizontal: 10,
                   vertical: 10,
                 ),
-                height: h * 0.25,
+                height: h * 0.22,
                 decoration: BoxDecoration(
                   color: Colors.black54,
                   borderRadius: BorderRadius.circular(25),
